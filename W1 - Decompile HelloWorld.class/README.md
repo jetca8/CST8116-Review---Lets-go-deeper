@@ -44,7 +44,7 @@ and that is the decompile java code. something like this:
 
 It seems the eclipse compile added default package named defpackage, and it keeps my customized name for the main() argument array.
 
-#Ending
+# Ending
 I don't think all the java.class file can be decompiled. and not sure what kind of class file can be decompiled.
 Not so many surprise, ha. Well, we just write one line of code.
 We will explore more interesting thing in the future.
