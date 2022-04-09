@@ -44,6 +44,6 @@ It is quite interesting to find that compiler also did the casting for  System.o
 
 There is no overload method in println() for byte, only boolean, char, double, float, int and long
 
-See https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/PrintStream.html#println()
+See [Oracle API doc] (https://docs.oracle.com/en/java/javase/11/docs/api/java.base/java/io/PrintStream.html#println())
 
 
