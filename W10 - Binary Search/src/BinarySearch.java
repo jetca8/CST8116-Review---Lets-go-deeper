@@ -1,69 +1,102 @@
-import java.util.Random;
+
 
 public class BinarySearch {
-	static int loopCounter1 = 0;	// index = 0.5
-	static int loopCounter2 = 0;	// index = 0.618
-	public static int binarySearch(int searchNumber, int[] array, double index) {  //index could be 0.5 or 0.618
+	private int loopCounter; //loopCouter of while loop. to see how many loops for different binary search index.
+	private double index; //binary search index, the percentage in binary search for next search. could be 0.5 or 0.618 in this case
+	private long executingTime;
+	
+	
+
+	public BinarySearch() {
+		this (0.5);
+		// TODO Auto-generated constructor stub
+	}
+
+
+	public BinarySearch (double index) {
+		super();
+		this.loopCounter = 0;
+		this.index = index;
+		this.executingTime = 0;
+	}
+
+	
+
+	public int getLoopCounter() {
+		return loopCounter;
+	}
+
+
+	public void setLoopCounter(int loopCounter) {
+		this.loopCounter = loopCounter;
+	}
+
+
+	public double getIndex() {
+		return index;
+	}
+
+
+	public void setIndex(double index) {
+		this.index = index;
+	}
+
+	
+
+
+	public long getExecutingTime() {
+		return executingTime;
+	}
+
+
+	public void setExecutingTime(long executingTime) {
+		this.executingTime = executingTime;
+	}
+	
+	
+
+	@Override
+	public String toString() {
+		return "BinarySearch [loopCounter=" + loopCounter + ", index=" + index + ", executingTime=" + executingTime
+				+ "]";
+	}
+
+
+	public int binarySearch(int searchNumber, int[] array) {  
 		int indexInArray = -1;
-		int frontIndex;
+		int startIndex;
 		int endIndex;
 		int currentIndex;
+		long loopStartingTime;
+		long loopEndingTime;
 		
-		
-		frontIndex = 0;
+		startIndex = 0;
 		endIndex = array.length -1;
 		
-		while (frontIndex < endIndex) {
-			if (index == 0.5) {
-				loopCounter1++;
-			}
-			if (index == 0.618) {
-				loopCounter2++;
-			}
+		loopStartingTime = System.nanoTime(); //get the time before loop
+		while (startIndex <= endIndex) {
+			loopCounter++;  // count the times of entering the loop
+
 			
-			currentIndex = (int)((frontIndex + (endIndex - frontIndex) * index));
+			//uncomment the println() to show the progress step by step
+			currentIndex = (int)((startIndex + (endIndex - startIndex) * index) );
 			if (searchNumber < array[currentIndex]) {
-				endIndex = currentIndex;
-//				System.out.println("frontIndex " + frontIndex+" endIndex " + endIndex);
+				endIndex = currentIndex-1;    //narrow the range: remove the right part
+//				System.out.println("startIndex " + startIndex+" currentIndex " + currentIndex +" endIndex " + endIndex);
 			} else if (searchNumber > array[currentIndex]) {
-				frontIndex = currentIndex;
-//				System.out.println("frontIndex " + frontIndex+" endIndex " + endIndex);
-			} else if (searchNumber == array[currentIndex]) {
+				startIndex = currentIndex+1;	//narrow the range: remove the left part
+//				System.out.println("startIndex " + startIndex+" currentIndex " + currentIndex +" endIndex " + endIndex);
+			} else { 				//searchNumber == array[currentIndex]
 				indexInArray = currentIndex;
-//				System.out.println("frontIndex " + frontIndex+" endIndex " + endIndex);
-//				System.out.println("indexInArray "+indexInArray);
+//				System.out.println(" indexInArray " + indexInArray );
 				break;
 			} 
 			
 		}		
-		
-	return indexInArray;
-	}
+		loopEndingTime = System.nanoTime(); //get the time after loop
+		executingTime += (loopEndingTime - loopStartingTime);
 
-	public static void main(String[] args) {
-
-		final int ARRAY_LENGTH = 1000000;
-		final int TEST_LOOP = 100000;
-		//generate a sorted array, assigned int value from 0 to array.length-1
-		int[] array = new int[ARRAY_LENGTH];
-		for (int i=0; i<array.length; i++) {
-			array[i]= i;
-		}
-		for (int j=0; j< TEST_LOOP; j++) {
-			//random a number from 0 to array.length (exclusive)
-			Random random = new Random();
-			
-			int randomNumber = random.nextInt(ARRAY_LENGTH);
-//			System.out.println("randomNumber" + randomNumber);
-			binarySearch(randomNumber, array, 0.618);
-			System.out.println("loopCounter2: " + loopCounter2);
-			
-			binarySearch(randomNumber, array, 0.5);
-			System.out.println("loopCounter1: " + loopCounter1);
-			
-			
-		}
-
+	return indexInArray;  // return -1 meaning not found
 	}
 
 }
