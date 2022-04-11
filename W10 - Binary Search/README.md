@@ -26,7 +26,7 @@ setting the array length of 1000, and repeat loop 10 million times
 The result shows :
 
 1. if the two binary search using the same random number(code is not included here), the search running later is faster (the search following the 1st search). This is related to the help from CPU cache?
-2. if the using separate random number for the two binary search, golden section 0.618 seems a littler faster (taks less time) , but the loop counter value is bigger. 
+2. if the using separate random number for the two binary search, golden section 0.618 seems a littler faster (takes less time) , but the loop counter value is bigger. 
 	
 So how comes the loop counter is bigger, but consuming time is less? Quite strange.
 
