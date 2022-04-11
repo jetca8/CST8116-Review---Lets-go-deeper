@@ -42,13 +42,13 @@ In the program, i will try to test which one is faster.
 				currentIndex = (int)((startIndex + (endIndex - startIndex) * index) );
 				if (searchNumber < array[currentIndex]) {
 					endIndex = currentIndex-1;    //narrow the range: remove the right part
-	//				System.out.println("startIndex " + startIndex+" currentIndex " + currentIndex +" endIndex " + endIndex);
+				//System.out.println("startIndex " + startIndex+" currentIndex " + currentIndex +" endIndex " + endIndex);
 				} else if (searchNumber > array[currentIndex]) {
 					startIndex = currentIndex+1;	//narrow the range: remove the left part
-	//				System.out.println("startIndex " + startIndex+" currentIndex " + currentIndex +" endIndex " + endIndex);
+				//System.out.println("startIndex " + startIndex+" currentIndex " + currentIndex +" endIndex " + endIndex);
 				} else { 				//searchNumber == array[currentIndex]
 					indexInArray = currentIndex;
-	//				System.out.println(" indexInArray " + indexInArray );
+				//System.out.println(" indexInArray " + indexInArray );
 					break;
 				} 
 				
