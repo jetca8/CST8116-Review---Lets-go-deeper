@@ -1,3 +1,2 @@
 # CST8116-Review---Lets-go-deeper
-
-I believe we can explore more!
+Just share something that is not taught in Stan's class as I believe we can explore more!
